@@ -1,0 +1,14 @@
+{
+  "name": "cafe-overflow-ntier",
+  "version": "1.0.0",
+  "description": "Café Overflow - Dev & Coffee Lounge. Taller 12 de Arquitectura de Software: aplicación N-Tier (Presentación, Negocio, Persistencia) sin frameworks.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node --no-warnings=ExperimentalWarning src/server.js",
+    "test": "node --no-warnings=ExperimentalWarning --test test/"
+  },
+  "engines": { "node": ">=24" },
+  "author": "Luisa Fernanda Velandia Salamanca",
+  "license": "MIT"
+}
