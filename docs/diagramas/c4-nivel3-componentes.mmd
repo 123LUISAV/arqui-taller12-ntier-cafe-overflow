@@ -1,0 +1,33 @@
+flowchart TB
+  subgraph pres["Capa de Presentación (src/presentation)"]
+    servidor["<b>Servidor y router</b><br/>[node:http]<br/>Enruta y sirve estáticos"]
+    ctrl["<b>Controladores</b><br/>[JavaScript]<br/>HTTP a Negocio; errores a códigos"]
+    valid["<b>Validaciones sintácticas</b><br/>[JavaScript]<br/>Requeridos, tipos, correo"]
+  end
+  subgraph neg["Capa de Negocio (src/negocio)"]
+    svcPed["<b>PedidoService</b><br/>Registrar, cotizar, avanzar estado;<br/>stock, pedido pendiente, DevPoints"]
+    svcCli["<b>ClienteService</b><br/>Alta Junior con acumulado 0; perfil"]
+    svcProd["<b>ProductoService</b><br/>Gestión del menú"]
+    reglas["<b>Reglas</b><br/>[JavaScript puro]<br/>Descuento, ascenso, DevPoints, estados"]
+  end
+  subgraph per["Capa de Persistencia (src/persistencia)"]
+    daos["<b>DAOs</b><br/>[Producto, Cliente, Pedido]<br/>Consultar, guardar, actualizar"]
+    conn["<b>Conexión, esquema y seed</b><br/>[node:sqlite]"]
+  end
+  bd[("<b>SQLite</b><br/>[archivo .db]")]
+  servidor --> ctrl
+  ctrl --> valid
+  ctrl --> svcPed
+  ctrl --> svcCli
+  ctrl --> svcProd
+  svcPed --> reglas
+  svcCli --> reglas
+  svcPed -->|"inyección"| daos
+  svcCli -->|"inyección"| daos
+  svcProd -->|"inyección"| daos
+  daos --> conn
+  conn -->|"SQL"| bd
+  classDef comp fill:#85bbf0,stroke:#5d82a8,color:#000
+  classDef db fill:#438dd5,stroke:#2e6295,color:#fff
+  class servidor,ctrl,valid,svcPed,svcCli,svcProd,reglas,daos,conn comp
+  class bd db

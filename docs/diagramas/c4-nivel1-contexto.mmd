@@ -1,0 +1,10 @@
+flowchart TB
+  cliente["<b>Cliente</b><br/>[Persona]<br/>Desarrollador/a que pide desde la mesa o para llevar y acumula DevPoints"]
+  personal["<b>Personal del café</b><br/>[Persona]<br/>Barista y administración: gestiona el menú y avanza los pedidos"]
+  cafe["<b>Café Overflow</b><br/>[Sistema de software]<br/>Aplicación web de pedidos, menú y programa de lealtad (DevPoints y niveles Junior/Mid/Senior)"]
+  cliente -->|"Consulta el menú, se registra,<br/>hace pedidos y redime DevPoints<br/>[HTTP / navegador]"| cafe
+  personal -->|"Administra productos y avanza<br/>pedidos hasta Entregado<br/>[HTTP / navegador]"| cafe
+  classDef persona fill:#08427b,stroke:#052e56,color:#fff
+  classDef sistema fill:#1168bd,stroke:#0b4884,color:#fff
+  class cliente,personal persona
+  class cafe sistema

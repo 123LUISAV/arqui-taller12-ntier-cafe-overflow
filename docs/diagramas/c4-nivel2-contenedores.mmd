@@ -1,0 +1,17 @@
+flowchart TB
+  cliente["<b>Cliente</b><br/>[Persona]"]
+  personal["<b>Personal del café</b><br/>[Persona]"]
+  subgraph limite["Sistema: Café Overflow"]
+    spa["<b>Interfaz web</b><br/>[HTML, CSS y JavaScript vanilla]<br/>Vistas de menú, pedido, pedidos, clientes y perfil.<br/>Solo renderiza y valida sintaxis"]
+    app["<b>Aplicación Node.js</b><br/>[Node.js 24, node:http, sin frameworks]<br/>Una unidad de despliegue dividida lógicamente en<br/>Presentación, Negocio y Persistencia"]
+    bd[("<b>Base de datos</b><br/>[SQLite, node:sqlite]<br/>Productos, clientes, pedidos e ítems")]
+  end
+  cliente -->|"Usa [HTTP]"| spa
+  personal -->|"Usa [HTTP]"| spa
+  spa -->|"Llama a la API [JSON sobre HTTP]"| app
+  app -->|"Lee y escribe [SQL]"| bd
+  classDef persona fill:#08427b,stroke:#052e56,color:#fff
+  classDef cont fill:#438dd5,stroke:#2e6295,color:#fff
+  class cliente,personal persona
+  class spa,app,bd cont
+  style limite fill:#fff,stroke:#444,stroke-dasharray: 5 5
