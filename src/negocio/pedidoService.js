@@ -148,6 +148,10 @@ export class PedidoService {
 
   #conCliente(pedido) {
     const cliente = this.clienteDao.obtener(pedido.clienteId);
-    return { ...pedido, clienteNombre: cliente ? cliente.nombre : '(desconocido)' };
+    return {
+      ...pedido,
+      clienteNombre: cliente ? cliente.nombre : '(desconocido)',
+      siguienteEstado: siguienteEstado(pedido.estado),
+    };
   }
 }

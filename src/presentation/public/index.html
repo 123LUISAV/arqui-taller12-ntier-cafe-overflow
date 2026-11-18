@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Café Overflow - Dev &amp; Coffee Lounge</title>
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="marca">
+      <span class="logo" aria-hidden="true">&lt;/&gt;</span>
+      <div>
+        <h1>Café Overflow</h1>
+        <p>Dev &amp; Coffee Lounge</p>
+      </div>
+    </div>
+    <nav class="pestanas" id="pestanas" aria-label="Secciones">
+      <button data-vista="menu" class="activa">Menú</button>
+      <button data-vista="pedido">Nuevo pedido</button>
+      <button data-vista="pedidos">Pedidos</button>
+      <button data-vista="clientes">Clientes</button>
+      <button data-vista="perfil">Perfil</button>
+    </nav>
+  </header>
+
+  <main>
+    <div id="aviso" class="aviso" role="status" hidden></div>
+
+    <section id="vista-menu" class="vista">
+      <h2>Menú</h2>
+      <div id="lista-productos" class="rejilla"></div>
+      <details class="tarjeta formulario-colapsable">
+        <summary>Agregar producto al menú</summary>
+        <form id="form-producto" novalidate>
+          <label>Nombre <input name="nombre" required></label>
+          <label>Precio base (COP) <input name="precioBase" type="number" min="1" step="1" required></label>
+          <label>Stock <input name="stock" type="number" min="0" step="1" required></label>
+          <button type="submit" class="primario">Guardar producto</button>
+        </form>
+      </details>
+    </section>
+
+    <section id="vista-pedido" class="vista" hidden>
+      <h2>Nuevo pedido</h2>
+      <div class="dos-columnas">
+        <div class="tarjeta">
+          <label>Cliente
+            <select id="pedido-cliente"></select>
+          </label>
+          <p id="pedido-cliente-info" class="nota"></p>
+          <h3>Productos</h3>
+          <div id="pedido-productos" class="lineas"></div>
+        </div>
+        <div class="tarjeta">
+          <h3>Resumen</h3>
+          <label>DevPoints a redimir
+            <input id="pedido-devpoints" type="number" min="0" step="1" value="0">
+          </label>
+          <p class="nota">Cada DevPoint descuenta $200. El cálculo lo hace el servidor.</p>
+          <div id="pedido-resumen" class="resumen"><p class="nota">Agrega productos para ver el total.</p></div>
+          <button id="btn-registrar" class="primario" type="button">Registrar pedido</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="vista-pedidos" class="vista" hidden>
+      <h2>Pedidos</h2>
+      <div id="lista-pedidos" class="lista"></div>
+    </section>
+
+    <section id="vista-clientes" class="vista" hidden>
+      <h2>Clientes</h2>
+      <div id="lista-clientes" class="rejilla"></div>
+      <div class="tarjeta">
+        <h3>Registrar cliente</h3>
+        <form id="form-cliente" novalidate>
+          <label>Nombre <input name="nombre" required autocomplete="name"></label>
+          <label>Correo <input name="correo" type="email" required autocomplete="email"></label>
+          <button type="submit" class="primario">Registrar</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="vista-perfil" class="vista" hidden>
+      <h2>Perfil del cliente</h2>
+      <label class="selector">Cliente
+        <select id="perfil-cliente"></select>
+      </label>
+      <div id="perfil-contenido"></div>
+    </section>
+  </main>
+
+  <footer class="pie">Taller 12 · Arquitectura de Software · UNAB · Luisa Fernanda Velandia Salamanca</footer>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
