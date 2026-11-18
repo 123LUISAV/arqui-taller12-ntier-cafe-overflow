@@ -117,7 +117,3 @@ Fuentes en Mermaid (`docs/diagramas/*.mmd`) y exportados a PNG y SVG.
 | `GET /api/pedidos`, `POST /api/pedidos` | Listar y registrar pedidos |
 | `POST /api/pedidos/cotizar` | Calcula el total sin guardar |
 | `POST /api/pedidos/:id/avanzar` | Avanza el estado del pedido |
-
-## Licencia
-
-MIT. Ver [LICENSE](LICENSE).

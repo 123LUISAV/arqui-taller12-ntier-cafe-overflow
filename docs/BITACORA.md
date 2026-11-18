@@ -5,7 +5,7 @@ Estudiante: Luisa Fernanda Velandia Salamanca (U00179371) - UNAB - Arquitectura 
 ## Cronología
 
 1. **Lectura del enunciado y decisiones de diseño.** Se eligió Node.js 24 sin dependencias (`node:http`, `node:sqlite`) y HTML/CSS/JS vanilla para cumplir "sin frameworks". Se definió la estructura `presentation / negocio / persistencia` con dependencias solo hacia abajo y un composition root (`src/app.js`).
-2. **Estructura inicial.** `package.json`, `.gitignore`, licencia MIT.
+2. **Estructura inicial.** `package.json`, `.gitignore`.
 3. **Persistencia.** Esquema de cuatro tablas (`productos`, `clientes`, `pedidos`, `pedido_items`), DAOs que solo consultan y guardan, seed con 8 productos temáticos y 3 clientes (Junior, Mid y Senior), y una función `transaccion` para operaciones atómicas.
 4. **Negocio.** `reglas.js` con funciones puras por cada regla, tres servicios y errores propios (`ErrorNegocio` con código). Los DAOs llegan por inyección.
 5. **Pruebas.** Suite con `node --test`: reglas puras, servicios con DAOs falsos, integración con SQLite en memoria.
